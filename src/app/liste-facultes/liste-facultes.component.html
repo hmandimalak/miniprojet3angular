@@ -1,0 +1,30 @@
+
+<div class="container">
+<div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <app-update-faculte 
+    [faculte]="updatedFac"
+    
+    (faculteUpdated)= "faculteUpdated($event)" 
+    [ajout]="ajout">
+</app-update-faculte>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom Faculte</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let fac of facultes">
+                    <tr>
+                        <td>{{fac.idfac}}</td>
+                        <td>{{fac.nomfac}}</td>
+                        <td><a class="btn btn-success" (click)="updateFac(fac)">Editer</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

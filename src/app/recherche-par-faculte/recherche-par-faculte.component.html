@@ -1,0 +1,32 @@
+<div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <label>faculte</label>
+    <select class="form-control form-control-lg" id="idfac" name="idfac" [(ngModel)]="idfac" (change)="onChange()">
+        <option *ngFor="let fac of facultes" value="{{fac.idfac}}"> {{fac.nomfac}}</option>
+    </select>
+</div>
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>specialité</th>
+                        <th>Date naissance</th>
+                        <th>faculte</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let medecin of medecins">
+                    <tr>
+                        <td>{{medecin.idmedecin}}</td>
+                        <td>{{medecin.nommedecin}}</td>
+                        <td>{{medecin.specialite}}</td>
+                        <td>{{medecin.datenaissance | date:'dd/MM/yyyy'}}</td>
+                        <td>{{medecin.faculte.nomfac}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

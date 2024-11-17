@@ -1,0 +1,69 @@
+<div class="container">
+    <div>
+        <h2>Modifier un medecin :</h2>
+    </div>
+    <form >
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >ID medecin</label>
+                <input  readonly type="text" [(ngModel)]="currentMedecin.idmedecin"name="idmedecin" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4" >
+            <label >Nom medecin</label>
+                <input type="text"[(ngModel)]= "currentMedecin.nommedecin"name="nommedecin" class="form-control">
+
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <label >specialité</label>
+                <input type="string" [(ngModel)]= "currentMedecin.specialite"name="specialite" class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >Date naissance</label>
+            <input type="date" [ngModel]="currentMedecin.datenaissance | date: 'yyyy-MM-dd'"(ngModelChange)=" currentMedecin.datenaissance= $event" name="datenaissance"class="form-control">
+        </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>faculte</label>
+                <select class="form-control form-control-lg" id="idCat" name="idCat"[(ngModel)]="updateFacId">
+                    <option *ngFor="let fac of facultes" [value]="fac.idfac" >{{fac.nomfac}}
+                    </option>
+                </select>
+            </div>
+            <div class="mt-2">
+                <button type="submit" (click)="onAddImageMedecin()" class="btn
+                btn-success">Ajouter Image</button>
+                </div>
+            <div class="col-sm-16 col-md-16 col-lg-16">
+                <label class="mb-2">Image :</label>
+                <input type="file" (change)="onImageUpload($event)" class="form-control">
+                </div>
+            <div class="col-sm-16 col-md-16 col-lg-16">
+                <img [src]="myImage" class="card-img-top img-fluid rounded-start"
+                style="width: 500px; height: 300px" />
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Images</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let img of currentMedecin.images">
+                                <tr>
+                                    <td><img class="card-img-top img-responsive" src="{{'data:' + img.type + ';base64,' + img.image}}"
+                                            style="height :50px;width:100px"></td>
+                                            <td style="width:20%" ><a class="btn btn-danger"
+                                                (click)="supprimerImage(img)">Supprimer</a></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                        
+        <div class="mt-2">
+            <button type="submit" (click)="updateMedecin()" class="btn btn-success">Modifer</button>
+        </div>
+    
+    </form>
+</div>

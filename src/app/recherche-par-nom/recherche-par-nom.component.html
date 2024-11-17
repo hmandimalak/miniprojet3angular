@@ -1,0 +1,45 @@
+<div class="container">
+
+
+   <!--  <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Medecin en tapant</label>
+        <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+        </form> -->
+    <form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2 ">
+        <label>Nom Medecin</label>
+        <input type="text" class="form-control" [(ngModel)]="nommedecin" name="nommedecin" class="form-control">
+        <button type="submit" (click)="recherchermeds()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+        </div>
+        </form> 
+    <div class="container">
+        <div class="card-body">
+            <div class="container">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Id</th>
+                                <th>Nom</th>
+                                <th>specialite</th>
+                                <th>Date naissance</th>
+                                <th>faculte</th>
+                            </tr>
+                            <tbody *ngFor="let medecin of medecins">
+                                <tr>
+                                    <td>{{medecin .idmedecin}}</td>
+                                    <td>{{medecin.nommedecin}}</td>
+                                    <td>{{medecin.specialite}}</td>
+                                    <td>{{medecin.datenaissance | date:'dd/MM/yyyy'}}</td>
+                                    <td>{{medecin.faculte.nomfac}}</td>
+                                
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

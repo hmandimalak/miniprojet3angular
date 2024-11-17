@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr> <th>Id</th><th>Nom</th> <th>specialité</th> <th>Date naissance</th><th>Faculte</th><th>Image</th></tr>
+                </thead>
+                <tbody *ngFor="let medecin of medecins">
+                    <tr >
+                        <td>{{medecin.idmedecin}}</td>
+                        <td>{{medecin.nommedecin}}</td>
+                        <td>{{medecin.specialite}}</td>
+                        <td>{{medecin.datenaissance | date:'dd/MM/yyyy'}}</td>
+                        <td>{{medecin.faculte?.nomfac}}</td>
+                        <td><img class="card-img-top img-responsive"
+                            src = "{{medecin.imageStr}}"
+                            style = "height :50px;width:100px">
+                            </td>
+                            
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerMedecin(medecin)">Supprimer</a></td>
+                        
+                        <td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateMedecin',medecin.idmedecin]">Modifier</a></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
